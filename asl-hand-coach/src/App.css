@@ -1,0 +1,74 @@
+.app {
+  min-height: 100vh;
+  padding: 16px;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.topbar {
+  margin-bottom: 12px;
+}
+
+.topbar h1 {
+  margin: 0 0 4px 0;
+  font-size: 20px;
+}
+
+.topbar p {
+  margin: 0;
+  opacity: 0.75;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+.cameraWrap {
+  width: min(900px, 100%);
+}
+
+.hud {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.hint {
+  opacity: 0.75;
+}
+
+.error {
+  color: #b00020;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #111;
+  aspect-ratio: 16 / 9;
+}
+
+/* Make video & canvas cover the same area */
+.video,
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Mirror both so it feels like a selfie camera */
+.video,
+.canvas {
+  transform: scaleX(-1);
+}
+
+.canvas {
+  pointer-events: none;
+}
