@@ -1,5 +1,6 @@
 import type { Handedness, Landmark } from "./types";
 
+// Expected length of the feature vector (21 landmarks * 3 (x,y,z))
 function dist3(a: Landmark, b: Landmark) {
   const dx = a.x - b.x;
   const dy = a.y - b.y;
@@ -7,6 +8,7 @@ function dist3(a: Landmark, b: Landmark) {
   return Math.sqrt(dx * dx + dy * dy + dz * dz);
 }
 
+// Convert raw landmarks and handedness into a normalized feature vector for recognition
 function normalizeHandedness(handedness: Handedness): Handedness {
   if (handedness === "Left" || handedness === "Right") return handedness;
   return "Unknown";
@@ -38,6 +40,8 @@ export function landmarksToFeatureVector(
     const palmSize = palmSizeRaw > 1e-6 ? palmSizeRaw : 1;
 
     const vector: number[] = [];
+    
+    // Process each landmark into the feature vector (63 iterations)
     for (let i = 0; i < landmarks.length; i++) {
         let x = (landmarks[i].x - wrist.x) / palmSize;
         const y = (landmarks[i].y - wrist.y) / palmSize;

@@ -41,6 +41,7 @@ export type UseHandTrackingReturn = {
     latestResultsRef: React.MutableRefObject<HandLandmarkerResult | null>;
 };
 
+// Custom React hook to manage hand tracking lifecycle and state
 export function useHandTracking(options: HandTrackingOptions = {}): UseHandTrackingReturn {
     const {
         modelAssetPath = "/models/hand_landmarker.task",
