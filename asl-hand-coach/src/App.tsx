@@ -1,19 +1,22 @@
 import './App.css'
 import CameraOverlay from './CameraOverlay'
+import { HandPipelineProvider } from "./pipeline/HandPipelineProvider";
 
 function App() {
 
   return (
-    <div className="app">
-      <header className="topbar">
-        <h1>ASL Hand Coach (MVP)</h1>
-        <p>Task 1: camera + live hand landmarks overlay</p>
-      </header>
+    <HandPipelineProvider>
+      <div className="app">
+        <header className="topbar">
+          <h1>ASL Hand Coach (MVP)</h1>
+          <p>Shared pipeline context (pre-modes)</p>
+        </header>
 
-      <main className="main">
-        <CameraOverlay />
-      </main>
-    </div>
+        <main className="main">
+          <CameraOverlay />
+        </main>
+      </div>
+    </HandPipelineProvider>
   );
 }
 
