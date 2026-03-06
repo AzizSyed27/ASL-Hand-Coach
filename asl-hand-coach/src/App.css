@@ -72,3 +72,120 @@
 .canvas {
   pointer-events: none;
 }
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin: 10px 0 14px;
+}
+
+.tabBtn {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.tabBtn.active {
+  border-color: #111;
+  font-weight: 600;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.modeArea {
+  width: 100%;
+}
+
+.panel {
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  padding: 14px;
+  background: #fff;
+}
+
+.panelHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.bigPrompt {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #f7f7f7;
+}
+
+.promptLabel {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.statusLine {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.muted {
+  opacity: 0.75;
+}
+
+.notice {
+  margin-top: 10px;
+  padding: 10px;
+  background: #fff3cd;
+  border: 1px solid #ffeeba;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.feedback {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.good {
+  font-weight: 700;
+}
+
+/* Teaching overlay image on top of stage */
+.overlayImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 160px;   /* adjust size */
+  height: auto;
+  object-fit: contain;
+
+  opacity: 0.35;
+  pointer-events: none;
+  user-select: none;
+
+  transform: scaleX(-1);
+}
