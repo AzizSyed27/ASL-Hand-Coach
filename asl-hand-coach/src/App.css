@@ -189,3 +189,313 @@
 
   transform: scaleX(-1);
 }
+
+/* Landing page styles */
+
+.landing {
+  min-height: 100vh;
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+.landingNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.landingBrand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logoDot {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: #111;
+}
+
+.brandName {
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.brandSub {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.landingNavActions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.landingMain {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 0 40px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border: 1px solid #e6e6e6;
+  border-radius: 999px;
+  font-size: 12px;
+  opacity: 0.85;
+  background: #fff;
+}
+
+.heroTitle {
+  margin: 12px 0 8px;
+  font-size: 44px;
+  line-height: 1.05;
+}
+
+@media (max-width: 520px) {
+  .heroTitle {
+    font-size: 34px;
+  }
+}
+
+.heroDesc {
+  margin: 0;
+  font-size: 16px;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+.heroActions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.primaryBtn,
+.secondaryBtn,
+.linkBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: inherit;
+}
+
+.primaryBtn {
+  background: #111;
+  border-color: #111;
+  color: #fff;
+}
+
+.secondaryBtn {
+  background: #fff;
+}
+
+.finePrint {
+  margin-top: 10px;
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+.heroCard {
+  border: 1px solid #e6e6e6;
+  border-radius: 16px;
+  padding: 14px;
+  background: #fff;
+}
+
+.heroCardTitle {
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.heroList {
+  margin: 0;
+  padding-left: 18px;
+  opacity: 0.9;
+}
+
+.heroMiniGrid {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 520px) {
+  .heroMiniGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mini {
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 10px;
+  background: #fafafa;
+}
+
+.miniTitle {
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.miniText {
+  font-size: 12px;
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
+.heroCardCta {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.section {
+  margin-top: 26px;
+  padding-top: 10px;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 22px;
+}
+
+.sectionDesc {
+  margin: 6px 0 0;
+  opacity: 0.75;
+}
+
+.cardGrid {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 900px) {
+  .cardGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  border: 1px solid #e6e6e6;
+  border-radius: 14px;
+  padding: 14px;
+  background: #fff;
+}
+
+.cardTitle {
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.cardBody {
+  opacity: 0.8;
+  line-height: 1.45;
+}
+
+.ctaRow {
+  margin-top: 12px;
+}
+
+.steps {
+  margin-top: 12px;
+  display: grid;
+  gap: 10px;
+}
+
+.step {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  border: 1px solid #e6e6e6;
+  border-radius: 14px;
+  padding: 12px;
+  background: #fff;
+}
+
+.stepNum {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  flex: 0 0 auto;
+}
+
+.stepTitle {
+  font-weight: 800;
+}
+
+.stepText {
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
+.privacyBox {
+  margin-top: 12px;
+  border: 1px solid #e6e6e6;
+  border-radius: 14px;
+  padding: 12px;
+  background: #fafafa;
+}
+
+.privacyTitle {
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.privacyText {
+  opacity: 0.8;
+}
+
+.landingFooter {
+  margin-top: 26px;
+  padding-top: 14px;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}

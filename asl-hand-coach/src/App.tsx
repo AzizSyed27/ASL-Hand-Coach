@@ -1,35 +1,25 @@
-import { useState } from "react";
-import "./App.css";
-import CameraOverlay from "./CameraOverlay";
-import ModeTabs, { type ModeKey } from "./components/ModeTabs";
+import { Routes, Route, Navigate } from "react-router-dom";
+import LandingPage from "./pages/LandingPage";
+import CoachApp from "./pages/CoachApp";
 import { HandPipelineProvider } from "./pipeline/HandPipelineProvider";
-import TeachingMode from "./modes/TechingMode";
-import QuizMode from "./modes/QuizMode";
-import FreeMode from "./modes/FreeMode";
 
 export default function App() {
-  const [mode, setMode] = useState<ModeKey>("teach");
-  const [overlayLabel, setOverlayLabel] = useState<string | null>(null);
-
   return (
-    <HandPipelineProvider>
-      <div className="app">
-        <header className="topbar">
-          <h1>ASL Hand Coach (MVP)</h1>
-          <p>Week 3: modes start (Teaching Mode first)</p>
-        </header>
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
 
-        <ModeTabs mode={mode} onChange={setMode} />
+      {/* Wrap only the app route with the pipeline provider */}
+      <Route
+        path="/app"
+        element={
+          <HandPipelineProvider>
+            <CoachApp />
+          </HandPipelineProvider>
+        }
+      />
 
-        <div className="layout">
-          <CameraOverlay overlayLabel={mode === "teach" ? overlayLabel : null} />
-          <div className="modeArea">
-            {mode === "teach" && <TeachingMode onTargetLabelChange={setOverlayLabel} />}
-            {mode === "quiz" && <QuizMode />}
-            {mode === "free" && <FreeMode />}
-          </div>
-        </div>
-      </div>
-    </HandPipelineProvider>
+      {/* Catch-all */}
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   );
 }
