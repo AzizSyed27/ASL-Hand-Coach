@@ -5,6 +5,7 @@ import ModeTabs, { type ModeKey } from "./components/ModeTabs";
 import { HandPipelineProvider } from "./pipeline/HandPipelineProvider";
 import TeachingMode from "./modes/TechingMode";
 import QuizMode from "./modes/QuizMode";
+import FreeMode from "./modes/FreeMode";
 
 export default function App() {
   const [mode, setMode] = useState<ModeKey>("teach");
@@ -25,12 +26,7 @@ export default function App() {
           <div className="modeArea">
             {mode === "teach" && <TeachingMode onTargetLabelChange={setOverlayLabel} />}
             {mode === "quiz" && <QuizMode />}
-            {mode === "free" && (
-              <div className="panel">
-                <h2>Free Mode</h2>
-                <p className="muted">Next task: timer commit + lock/release + Space/Backspace/Clear.</p>
-              </div>
-            )}
+            {mode === "free" && <FreeMode />}
           </div>
         </div>
       </div>
