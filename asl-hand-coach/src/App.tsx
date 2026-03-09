@@ -4,6 +4,7 @@ import CameraOverlay from "./CameraOverlay";
 import ModeTabs, { type ModeKey } from "./components/ModeTabs";
 import { HandPipelineProvider } from "./pipeline/HandPipelineProvider";
 import TeachingMode from "./modes/TechingMode";
+import QuizMode from "./modes/QuizMode";
 
 export default function App() {
   const [mode, setMode] = useState<ModeKey>("teach");
@@ -23,12 +24,7 @@ export default function App() {
           <CameraOverlay overlayLabel={mode === "teach" ? overlayLabel : null} />
           <div className="modeArea">
             {mode === "teach" && <TeachingMode onTargetLabelChange={setOverlayLabel} />}
-            {mode === "quiz" && (
-              <div className="panel">
-                <h2>Quiz Mode</h2>
-                <p className="muted">Next task: scoring + streak + prompt cycling.</p>
-              </div>
-            )}
+            {mode === "quiz" && <QuizMode />}
             {mode === "free" && (
               <div className="panel">
                 <h2>Free Mode</h2>
