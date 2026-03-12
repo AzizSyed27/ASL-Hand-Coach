@@ -219,8 +219,6 @@ export default function FreeMode() {
           Force unlock
         </button>
       </div>
-
-      
     </div>
   );
 }

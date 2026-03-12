@@ -180,7 +180,7 @@ export default function CameraOverlay(props: { overlayLabel?: string | null }) {
         </div>
       </div>
 
-      {/*  
+      
       {import.meta.env.DEV && (
         <div className="cameraDevTools">
           <DevTemplateTools
@@ -190,7 +190,7 @@ export default function CameraOverlay(props: { overlayLabel?: string | null }) {
           />
         </div>
       )}
-        */}
+        
     </section>
   );
 }
