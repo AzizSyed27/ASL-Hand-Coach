@@ -108,50 +108,70 @@ export default function QuizMode() {
       : `So close. Not ${target}. I’m seeing ${debug.stablePrediction}. Try again.`;
 
   return (
-    <div className="panel">
-      <div className="panelHeader">
-        <h2>Quiz Mode</h2>
-        <div className="muted">
-          Correct: <strong>{stats.correct}</strong> • Wrong: <strong>{stats.wrong}</strong> • Streak:{" "}
-          <strong>{stats.streak}</strong> • Best: <strong>{stats.bestStreak}</strong>
+    <div className="panel coachModePanel">
+      <div className="panelHeader coachPanelHeader">
+        <div>
+          <span className="modeKicker">Quiz mode</span>
+          <h3 className="modeHeading">Answer the current prompt</h3>
+        </div>
+
+        <div className="modeMeta">
+          <span className="modeMetaChip">
+            Correct <strong>{stats.correct}</strong>
+          </span>
+          <span className="modeMetaChip">
+            Wrong <strong>{stats.wrong}</strong>
+          </span>
+          <span className="modeMetaChip">
+            Streak <strong>{stats.streak}</strong>
+          </span>
+          <span className="modeMetaChip">
+            Best <strong>{stats.bestStreak}</strong>
+          </span>
         </div>
       </div>
 
-      <div className="bigPrompt" style={{ marginTop: 12 }}>
+      <div className="bigPrompt modePromptCard">
+        <div className="modePromptTop">
+          <span className="modePromptLabel">Prompt</span>
+          <span className="modeNeedChip">Need {CORRECT_HOLD_MS}ms</span>
+        </div>
+
         <div className="promptLabel">{target}</div>
 
-        <div className="statusLine">
-          <span>
-            Stable: <strong>{debug.stablePrediction ?? "—"}</strong>
+        <div className="statusLine modeStatusLine">
+          <span className="modeStatusPill">
+            Stable <strong>{debug.stablePrediction ?? "-"}</strong>
           </span>
-          <span>
-            Held: <strong>{Math.floor(debug.stableForMs)}ms</strong>
-          </span>
-          <span>
-            Need: <strong>{CORRECT_HOLD_MS}ms</strong>
+          <span className="modeStatusPill">
+            Held <strong>{Math.floor(debug.stableForMs)}ms</strong>
           </span>
         </div>
 
         {isMotionLetter && (
           <div className="notice">
-            MVP note: <strong>{target}</strong> is motion in real ASL. For MVP, use the static version.
+            Note: <strong>{target}</strong> is motion in real ASL. For now,
+            use the static version.
           </div>
         )}
 
-        <div className="feedback" style={{ marginTop: 10 }}>
-          <span className={debug.stablePrediction === target ? "good" : "muted"}>{feedback}</span>
+        <div className="feedback">
+          <span
+            className={debug.stablePrediction === target ? "good" : "muted"}
+          >
+            {feedback}
+          </span>
         </div>
       </div>
 
-      <div className="row">
+      <div className="row modeActions">
         <button type="button" onClick={() => nextPrompt(true)}>
-          Skip (reset streak)
+          Skip
         </button>
-        <button type="button" onClick={reset}>
+        <button type="button" onClick={reset} className="modeGhostBtn">
           Reset stats
         </button>
       </div>
-
     </div>
   );
 }

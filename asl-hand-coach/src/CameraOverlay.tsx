@@ -1,12 +1,19 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { DrawingUtils, HandLandmarker, type HandLandmarkerResult } from "@mediapipe/tasks-vision";
+import {
+  DrawingUtils,
+  HandLandmarker,
+  type HandLandmarkerResult,
+} from "@mediapipe/tasks-vision";
 import { useHandPipeline } from "../src/pipeline/HandPipelineProvider";
 import DevTemplateTools from "../src/components/DevTemplateTools";
 
 function labelToOverlayPath(label: string): string {
-  // Convention: put transparent PNGs here:
-  // public/overlays/A.png, public/overlays/0.png, public/overlays/SPACE.png, etc.
   return `/overlays/${label}.png`;
+}
+
+function formatValue(value: string | number | null | undefined) {
+  if (value === null || value === undefined || value === "") return "-";
+  return String(value);
 }
 
 export default function CameraOverlay(props: { overlayLabel?: string | null }) {
@@ -15,13 +22,20 @@ export default function CameraOverlay(props: { overlayLabel?: string | null }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [overlayOk, setOverlayOk] = useState(true);
 
-  const { videoRef, status, error, debug, setFrameRenderer, getLatestVector, templatesRev, bumpTemplatesRev } =
-    useHandPipeline();
+  const {
+    videoRef,
+    status,
+    error,
+    debug,
+    setFrameRenderer,
+    getLatestVector,
+    templatesRev,
+    bumpTemplatesRev,
+  } = useHandPipeline();
 
   const overlaySrc = overlayLabel ? labelToOverlayPath(overlayLabel) : null;
 
   useEffect(() => {
-    // reset when the target changes
     setOverlayOk(true);
   }, [overlaySrc]);
 
@@ -38,7 +52,13 @@ export default function CameraOverlay(props: { overlayLabel?: string | null }) {
   };
 
   const drawResults = useCallback(
-    ({ results, video }: { results: HandLandmarkerResult; video: HTMLVideoElement }) => {
+    ({
+      results,
+      video,
+    }: {
+      results: HandLandmarkerResult;
+      video: HTMLVideoElement;
+    }) => {
       const canvas = canvasRef.current;
       if (!canvas) return;
 
@@ -51,7 +71,10 @@ export default function CameraOverlay(props: { overlayLabel?: string | null }) {
 
       const drawingUtils = new DrawingUtils(ctx);
       for (const handLandmarks of results.landmarks ?? []) {
-        drawingUtils.drawConnectors(handLandmarks, HandLandmarker.HAND_CONNECTIONS);
+        drawingUtils.drawConnectors(
+          handLandmarks,
+          HandLandmarker.HAND_CONNECTIONS
+        );
         drawingUtils.drawLandmarks(handLandmarks);
       }
     },
@@ -63,40 +86,65 @@ export default function CameraOverlay(props: { overlayLabel?: string | null }) {
     return () => setFrameRenderer(null);
   }, [drawResults, setFrameRenderer]);
 
+  const summaryPrediction =
+    debug.stablePrediction ?? debug.prediction ?? debug.bestLabel ?? "Unknown";
+
   return (
-    <div className="cameraWrap">
-      <div className="hud">
+    <section className="cameraShell">
+      <div className="cameraCardHeader">
         <div>
-          <strong>Status:</strong> {status}
+          <span className="cameraEyebrow">Live tracking</span>
+          <h2 className="cameraCardTitle">Camera preview</h2>
         </div>
 
-        <div>
-          <strong>Templates:</strong> {debug.templatesCount}{" "}
-          <strong style={{ marginLeft: 12 }}>Hands:</strong> {debug.hands}{" "}
-          <strong style={{ marginLeft: 12 }}>Handedness:</strong> {debug.handedness}
-        </div>
-
-        <div>
-          <strong>Prediction:</strong> {debug.prediction ?? "Unknown"}{" "}
-          <strong style={{ marginLeft: 12 }}>Best:</strong> {debug.bestLabel ?? "-"}{" "}
-          <strong style={{ marginLeft: 12 }}>Dist:</strong>{" "}
-          {Number.isFinite(debug.distance) ? debug.distance.toFixed(3) : "∞"}{" "}
-          <strong style={{ marginLeft: 12 }}>Stable:</strong> {debug.stablePrediction ?? "—"}{" "}
-          <strong style={{ marginLeft: 12 }}>Held:</strong> {Math.floor(debug.stableForMs)}ms
-        </div>
-
-        {error && (
-          <div className="error">
-            <strong>Error:</strong> {error}
-          </div>
-        )}
+        <div className="cameraStatusPill">{status}</div>
       </div>
 
-      <div className="stage">
+      <div className="cameraStatGrid">
+        <div className="cameraStat">
+          <span className="cameraStatLabel">Hands</span>
+          <strong className="cameraStatValue">
+            {formatValue(debug.hands)}
+          </strong>
+        </div>
+
+        <div className="cameraStat">
+          <span className="cameraStatLabel">Handedness</span>
+          <strong className="cameraStatValue">
+            {formatValue(debug.handedness)}
+          </strong>
+        </div>
+
+        <div className="cameraStat">
+          <span className="cameraStatLabel">Templates</span>
+          <strong className="cameraStatValue">
+            {formatValue(debug.templatesCount)}
+          </strong>
+        </div>
+
+        <div className="cameraStat">
+          <span className="cameraStatLabel">Target</span>
+          <strong className="cameraStatValue">
+            {overlayLabel ?? "Free"}
+          </strong>
+        </div>
+
+        <div className="cameraStat">
+          <span className="cameraStatLabel">Prediction</span>
+          <strong className="cameraStatValue">{summaryPrediction}</strong>
+        </div>
+      </div>
+
+      {error && (
+        <div className="cameraAlert">
+          <strong>Error:</strong> {error}
+        </div>
+      )}
+
+      <div className="stage cameraStage">
         <video ref={videoRef} className="video" />
         <canvas ref={canvasRef} className="canvas" />
 
-        {/* Optional teaching overlay (transparent PNG) */}
         {overlaySrc && overlayOk && (
           <img
             className="overlayImg"
@@ -108,9 +156,41 @@ export default function CameraOverlay(props: { overlayLabel?: string | null }) {
         )}
       </div>
 
+      <div className="cameraInfoBar">
+        <div className="cameraInfoItem">
+          <span>Best match</span>
+          <strong>{debug.bestLabel ?? "-"}</strong>
+        </div>
+
+        <div className="cameraInfoItem">
+          <span>Distance</span>
+          <strong>
+            {Number.isFinite(debug.distance) ? debug.distance.toFixed(3) : "-"}
+          </strong>
+        </div>
+
+        <div className="cameraInfoItem">
+          <span>Stable</span>
+          <strong>{debug.stablePrediction ?? "-"}</strong>
+        </div>
+
+        <div className="cameraInfoItem">
+          <span>Held</span>
+          <strong>{Math.floor(debug.stableForMs)} ms</strong>
+        </div>
+      </div>
+
+      {/*  
       {import.meta.env.DEV && (
-        <DevTemplateTools key={templatesRev} getLatestVector={getLatestVector} onTemplatesChanged={bumpTemplatesRev} />
+        <div className="cameraDevTools">
+          <DevTemplateTools
+            key={templatesRev}
+            getLatestVector={getLatestVector}
+            onTemplatesChanged={bumpTemplatesRev}
+          />
+        </div>
       )}
-    </div>
+        */}
+    </section>
   );
 }

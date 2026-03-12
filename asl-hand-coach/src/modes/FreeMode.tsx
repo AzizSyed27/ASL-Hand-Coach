@@ -124,12 +124,23 @@ export default function FreeMode() {
     !locked && debug.stablePrediction !== null && debug.stableForMs >= REQUIRED_STABLE_MS;
 
   return (
-    <div className="panel">
-      <div className="panelHeader">
-        <h2>Free Mode</h2>
-        <div className="muted">
-          Commit:{" "}
-          <select value={commitIntervalMs} onChange={(e) => setCommitIntervalMs(Number(e.target.value))}>
+    <div className="panel coachModePanel">
+      <div className="panelHeader coachPanelHeader">
+        <div>
+          <span className="modeKicker">Free mode</span>
+          <h3 className="modeHeading">Spell naturally at your own pace</h3>
+        </div>
+
+        <div className="modeControlGroup">
+          <label className="modeSelectLabel" htmlFor="commit-interval">
+            Commit speed
+          </label>
+          <select
+            id="commit-interval"
+            className="modeSelect"
+            value={commitIntervalMs}
+            onChange={(e) => setCommitIntervalMs(Number(e.target.value))}
+          >
             <option value={1000}>Every 1.0s</option>
             <option value={1200}>Every 1.2s</option>
             <option value={1500}>Every 1.5s</option>
@@ -138,65 +149,63 @@ export default function FreeMode() {
         </div>
       </div>
 
-      <div className="bigPrompt" style={{ marginTop: 12 }}>
-        <div style={{ fontSize: 16, fontWeight: 700 }}>Output</div>
-        <div
-          style={{
-            marginTop: 8,
-            padding: 12,
-            borderRadius: 12,
-            background: "#fff",
-            border: "1px solid #e6e6e6",
-            minHeight: 56,
-            whiteSpace: "pre-wrap",
-            wordBreak: "break-word",
-            fontSize: 18,
-          }}
-        >
+      <div className="bigPrompt modePromptCard">
+        <div className="modePromptTop">
+          <span className="modePromptLabel">Output</span>
+          <span className="modeNeedChip">Need {REQUIRED_STABLE_MS}ms</span>
+        </div>
+
+        <div className="modeOutputBox">
           {text || <span className="muted">Make signs to type…</span>}
         </div>
 
-        <div className="statusLine" style={{ marginTop: 10 }}>
-          <span>
-            Prediction: <strong>{debug.prediction ?? "Unknown"}</strong>
+        <div className="statusLine modeStatusLine">
+          <span className="modeStatusPill">
+            Prediction <strong>{debug.prediction ?? "Unknown"}</strong>
           </span>
-          <span>
-            Stable: <strong>{debug.stablePrediction ?? "—"}</strong>
+          <span className="modeStatusPill">
+            Stable <strong>{debug.stablePrediction ?? "-"}</strong>
           </span>
-          <span>
-            Held: <strong>{Math.floor(debug.stableForMs)}ms</strong>
+          <span className="modeStatusPill">
+            Held <strong>{Math.floor(debug.stableForMs)}ms</strong>
           </span>
-          <span>
-            Locked: <strong>{locked ? "YES" : "NO"}</strong>
+          <span className="modeStatusPill">
+            Locked <strong>{locked ? "YES" : "NO"}</strong>
           </span>
-          <span>
-            Eligible: <strong>{eligible ? "YES" : "NO"}</strong>
+          <span className="modeStatusPill">
+            Eligible <strong>{eligible ? "YES" : "NO"}</strong>
           </span>
-          <span>
-            LastCommit: <strong>{lastCommittedLabelRef.current ?? "—"}</strong>
+          <span className="modeStatusPill">
+            Last commit <strong>{lastCommittedLabelRef.current ?? "-"}</strong>
           </span>
         </div>
 
-        <div className="feedback" style={{ marginTop: 10 }}>
+        <div className="feedback">
           {locked ? (
             <span className="muted">
-              Locked after commit. Unlock by removing your hand OR switching to any different sign for ~{RELEASE_MS}ms.
+              Locked after commit. Unlock by removing your hand or switching to
+              another sign for about {RELEASE_MS}ms.
             </span>
           ) : eligible ? (
-            <span className="good">✅ Ready — next timer tick will commit.</span>
+            <span className="good">Ready - the next timer tick will commit.</span>
           ) : (
-            <span className="muted">Hold a stable sign ({REQUIRED_STABLE_MS}ms+) to become eligible.</span>
+            <span className="muted">
+              Hold a stable sign for at least {REQUIRED_STABLE_MS}ms.
+            </span>
           )}
         </div>
       </div>
 
-      <div className="row" style={{ marginTop: 12 }}>
-        <button type="button" onClick={addSpace}>Add Space</button>
-        <button type="button" onClick={backspace}>Backspace</button>
-        <button type="button" onClick={clear}>Clear</button>
-
-        <div style={{ flex: 1 }} />
-
+      <div className="row modeActions">
+        <button type="button" onClick={addSpace}>
+          Add space
+        </button>
+        <button type="button" onClick={backspace}>
+          Backspace
+        </button>
+        <button type="button" onClick={clear}>
+          Clear
+        </button>
         <button
           type="button"
           onClick={() => {
@@ -205,14 +214,13 @@ export default function FreeMode() {
             releaseSinceRef.current = null;
           }}
           disabled={!locked}
+          className="modeGhostBtn"
         >
-          Force Unlock (dev)
+          Force unlock
         </button>
       </div>
 
-      <div className="muted" style={{ marginTop: 10, fontSize: 13 }}>
-        Repeats: L → briefly switch to any other sign (or remove hand) → L again.
-      </div>
+      
     </div>
   );
 }

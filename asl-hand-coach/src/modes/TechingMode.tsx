@@ -70,53 +70,69 @@ export default function TeachingMode({ onTargetLabelChange }: Props) {
   const stableMatches = debug.stablePrediction === target;
 
   return (
-    <div className="panel">
-      <div className="panelHeader">
-        <h2>Teaching Mode</h2>
-        <div className="muted">
-          Progress: <strong>{progressText}</strong> • Completed: <strong>{doneCount}</strong>
+    <div className="panel coachModePanel">
+      <div className="panelHeader coachPanelHeader">
+        <div>
+          <span className="modeKicker">Teaching mode</span>
+          <h3 className="modeHeading">Follow the target sign</h3>
+        </div>
+
+        <div className="modeMeta">
+          <span className="modeMetaChip">
+            Progress <strong>{progressText}</strong>
+          </span>
+          <span className="modeMetaChip">
+            Completed <strong>{doneCount}</strong>
+          </span>
         </div>
       </div>
 
-      <div className="bigPrompt">
+      <div className="bigPrompt modePromptCard">
+        <div className="modePromptTop">
+          <span className="modePromptLabel">Target</span>
+          <span className="modeNeedChip">Need {HOLD_MS}ms</span>
+        </div>
+
         <div className="promptLabel">{target}</div>
 
-        <div className="statusLine">
-          <span>
-            Stable: <strong>{debug.stablePrediction ?? "—"}</strong>
+        <div className="statusLine modeStatusLine">
+          <span className="modeStatusPill">
+            Stable <strong>{debug.stablePrediction ?? "-"}</strong>
           </span>
-          <span>
-            Held: <strong>{Math.floor(debug.stableForMs)}ms</strong>
-          </span>
-          <span>
-            Need: <strong>{HOLD_MS}ms</strong>
+          <span className="modeStatusPill">
+            Held <strong>{Math.floor(debug.stableForMs)}ms</strong>
           </span>
         </div>
 
         {isMotionLetter && (
           <div className="notice">
-            MVP note: <strong>{target}</strong> is motion in real ASL. For MVP, use the static version.
+            MVP note: <strong>{target}</strong> is motion in real ASL. For MVP,
+            use the static version.
           </div>
         )}
 
         <div className="feedback">
           {stableMatches ? (
-            <span className="good">✅ Correct — keep holding…</span>
+            <span className="good">Correct - keep holding to advance.</span>
           ) : (
-            <span className="muted">Make the sign and hold steady until it advances.</span>
+            <span className="muted">
+              Make the sign and hold steady until it advances.
+            </span>
           )}
         </div>
       </div>
 
-      <div className="row">
+      <div className="row modeActions">
         <button type="button" onClick={goPrev} disabled={idx === 0}>
           Back
         </button>
-        <button type="button" onClick={goNext} disabled={idx === labels.length - 1}>
+        <button
+          type="button"
+          onClick={goNext}
+          disabled={idx === labels.length - 1}
+        >
           Next
         </button>
-
-        <div style={{ flex: 1 }} />
 
         {(target === "J" || target === "Z") && (
           <button type="button" onClick={skip}>
@@ -124,13 +140,13 @@ export default function TeachingMode({ onTargetLabelChange }: Props) {
           </button>
         )}
 
-        <button type="button" onClick={reset}>
+        <button type="button" onClick={reset} className="modeGhostBtn">
           Reset
         </button>
       </div>
 
-      <div className="muted" style={{ marginTop: 10, fontSize: 13 }}>
-        Tip: For best results, keep your hand centered and don’t rotate your wrist too much.
+      <div className="modeHint">
+        Tip: keep your hand centered and avoid rotating your wrist too much.
       </div>
     </div>
   );

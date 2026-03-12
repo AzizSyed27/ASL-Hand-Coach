@@ -1,0 +1,638 @@
+.app.coachPage {
+  min-height: 100vh;
+  padding: var(--space-5) var(--space-8) var(--space-12);
+  background: var(--color-brand);
+}
+
+.coachPageInner {
+  max-width: 1700px;
+  margin: 0 auto;
+}
+
+.coachHero {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-8);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-8);
+}
+
+.coachEyebrow {
+  display: inline-block;
+  margin-bottom: var(--space-3);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.coachHeroTitle {
+  color: var(--color-white);
+  font-size: clamp(2.6rem, 5vw, 4.4rem);
+  line-height: var(--line-height-hero);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.04em;
+}
+
+.coachHeroText {
+  margin: var(--space-4) 0 0;
+  color: rgba(255, 255, 255, 0.94);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.coachHeroActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.coachModeBadge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: var(--radius-sm);
+  color: var(--color-white);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.coachBackBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 16px;
+  border-radius: var(--radius-sm);
+  background: var(--color-white);
+  color: var(--color-black);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.coachBackBtn:hover {
+  color: var(--color-brand);
+}
+
+.coachSurface {
+  border: 1px solid var(--color-brand-soft-border);
+  border-radius: var(--radius-sm);
+  padding: clamp(18px, 2vw, 28px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.coachTabsHeader {
+  margin-bottom: var(--space-5);
+}
+
+.coachTabsEyebrow {
+  display: inline-block;
+  margin-bottom: var(--space-2);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.coachTabsTitle {
+  color: var(--color-white);
+  font-size: clamp(1.6rem, 2vw, 2.3rem);
+  line-height: 1.08;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.03em;
+}
+
+.tabs {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin: 0 0 var(--space-6);
+  padding: var(--space-2);
+  width: fit-content;
+  max-width: 100%;
+  border: 1px solid var(--color-brand-soft-border);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.tabBtn {
+  padding: var(--space-3) var(--space-5);
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--color-white);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  transition: border-color var(--transition-fast),
+    background var(--transition-fast), color var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+.tabBtn:hover {
+  opacity: 0.85;
+}
+
+.tabBtn.active {
+  border-color: var(--color-white);
+  background: var(--color-white);
+  color: var(--color-black);
+  font-weight: var(--font-weight-semibold);
+}
+
+.layout.coachLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  gap: clamp(18px, 2vw, 28px);
+  align-items: start;
+}
+
+.chooseMode{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: var(--space-5);
+}
+
+.cameraWrap {
+  width: 100%;
+}
+
+.cameraShell,
+.coachModeArea {
+  border-radius: 18px;
+  background: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  padding: clamp(16px, 1.8vw, 22px);
+}
+
+.cameraCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.cameraEyebrow {
+  display: inline-block;
+  margin-bottom: var(--space-2);
+  color: var(--color-brand-dark);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.cameraCardTitle {
+  color: var(--color-black);
+  font-size: clamp(1.3rem, 1.8vw, 1.7rem);
+  line-height: 1.1;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.02em;
+}
+
+.cameraStatusPill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-soft);
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  white-space: nowrap;
+}
+
+.cameraStatGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.cameraStat {
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-soft);
+}
+
+.cameraStatLabel {
+  display: block;
+  margin-bottom: var(--space-1);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.cameraStatValue {
+  color: var(--color-black);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.cameraAlert {
+  margin-bottom: var(--space-5);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid #f3c4c8;
+  background: #fff4f5;
+  color: var(--color-danger);
+  font-size: var(--font-size-sm);
+}
+
+.stage.cameraStage {
+  position: relative;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-stage-bg);
+  aspect-ratio: 16 / 9;
+  box-shadow: 0 18px 40px rgba(17, 17, 17, 0.08);
+}
+
+.video,
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+}
+
+.canvas {
+  pointer-events: none;
+}
+
+.overlayImg {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: min(28%, 180px);
+  height: auto;
+  object-fit: contain;
+  opacity: 0.4;
+  pointer-events: none;
+  user-select: none;
+  transform: scaleX(-1);
+}
+
+.cameraInfoBar {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.cameraInfoItem {
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-soft);
+  border: 1px solid var(--color-border);
+}
+
+.cameraInfoItem span {
+  display: block;
+  margin-bottom: var(--space-1);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.cameraInfoItem strong {
+  color: var(--color-black);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.cameraDevTools {
+  margin-top: var(--space-5);
+}
+
+.coachModeArea {
+  width: 100%;
+}
+
+.coachPanelIntro {
+  margin-bottom: var(--space-5);
+}
+
+.coachPanelEyebrow {
+  display: inline-block;
+  margin-bottom: var(--space-2);
+  color: var(--color-brand-dark);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.coachPanelTitle {
+  color: var(--color-black);
+  font-size: clamp(1.4rem, 1.9vw, 1.9rem);
+  line-height: 1.08;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.02em;
+}
+
+.coachPanelText {
+  margin: var(--space-3) 0 0;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  font-size: var(--font-size-md);
+}
+
+.panel {
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: clamp(16px, 1.4vw, 22px);
+  background: var(--color-white);
+}
+
+.panelHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-4);
+}
+
+.bigPrompt {
+  margin-top: var(--space-5);
+  padding: var(--space-5);
+  border-radius: 16px;
+  border: 1px solid #f4d2cf;
+  background: #fff8f7;
+}
+
+.promptLabel {
+  font-size: clamp(3rem, 5vw, 4rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  font-family: var(--font-family-heading);
+  color: var(--color-brand-dark);
+}
+
+.statusLine {
+  display: flex;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+  margin-top: var(--space-4);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.row {
+  display: flex;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.notice {
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+  background: #fff7dc;
+  border: 1px solid #f2dd98;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+}
+
+.feedback {
+  margin-top: var(--space-4);
+  font-size: var(--font-size-sm);
+}
+
+.good {
+  font-weight: var(--font-weight-bold);
+}
+
+.muted {
+  color: var(--color-text-muted);
+}
+
+.error {
+  color: var(--color-danger);
+}
+
+@media (max-width: 1100px) {
+  .layout.coachLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .cameraStatGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cameraInfoBar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .app.coachPage {
+    padding: 12px 14px 32px;
+  }
+
+  .coachHeroTitle {
+    font-size: 2.6rem;
+  }
+
+  .coachSurface {
+    padding: 16px;
+  }
+
+  .tabs {
+    width: 100%;
+  }
+
+  .cameraStatGrid,
+  .cameraInfoBar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cameraCardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 520px) {
+  .cameraStatGrid,
+  .cameraInfoBar {
+    grid-template-columns: 1fr;
+  }
+
+  .overlayImg {
+    width: min(36%, 140px);
+  }
+
+  .promptLabel {
+    font-size: 3rem;
+  }
+}
+
+.coachPanelHeader {
+  align-items: flex-start;
+}
+
+.modeKicker {
+  display: inline-block;
+  margin-bottom: 6px;
+  color: var(--color-brand-dark);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.modeHeading {
+  margin: 0;
+  color: var(--color-black);
+  font-family: var(--font-family-heading);
+  font-size: clamp(1.2rem, 1.6vw, 1.5rem);
+  line-height: 1.1;
+  font-weight: var(--font-weight-semibold);
+}
+
+.modeMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.modeMetaChip,
+.modeStatusPill,
+.modeNeedChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-soft);
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.modePromptCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.modePromptTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.modePromptLabel {
+  color: var(--color-brand-dark);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.modeStatusLine {
+  gap: 10px;
+}
+
+.modeActions {
+  align-items: center;
+}
+
+.modeActions button {
+  min-height: 35px;
+  padding: 0 16px;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-soft);
+  color: var(--color-black);
+  font-weight: var(--font-weight-semibold);
+}
+
+.modeActions button:hover {
+  border-color: var(--color-brand-soft-border);
+  background: #fff5f3;
+}
+
+.modeActions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.modeGhostBtn {
+  background: var(--color-white);
+}
+
+.modeHint {
+  margin-top: 12px;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.modeControlGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 170px;
+}
+
+.modeSelectLabel {
+  color: var(--color-text-muted);
+  font-size: 13px;
+  font-weight: var(--font-weight-medium);
+}
+
+.modeSelect {
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-surface-soft);
+  color: var(--color-black);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-sm);
+}
+
+.modeOutputBox {
+  min-height: 68px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  color: var(--color-black);
+  font-size: 18px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+@media (max-width: 700px) {
+  .chooseMode {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .panelHeader.coachPanelHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .modeMeta {
+    justify-content: flex-start;
+  }
+
+  .modePromptTop {
+    align-items: flex-start;
+  }
+}
