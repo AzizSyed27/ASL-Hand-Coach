@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
-import heroImg from "../assets/landing-hero.png"; // put your image here
-import logo from "../assets/asl_logo.png"; // put your logo here
+import heroImg from "../assets/landing-hero.png";
+import logo from "../assets/asl_logo.png"; 
+import learnCardImg from "../assets/feature-learn.png";
+import feedbackCardImg from "../assets/feature-feedback.png";
+import practiceCardImg from "../assets/feature-practice.png";
 import "../styles/landing-page.css"
 
 export default function LandingPage() {
@@ -52,7 +55,7 @@ export default function LandingPage() {
                 Try it Now
               </Link>
 
-              <a className="heroLearnBtn" href="#how">
+              <a className="heroLearnBtn" href="#features">
                 Learn more
               </a>
             </div>
@@ -64,6 +67,86 @@ export default function LandingPage() {
               alt="Landing page hero"
               className="heroMockupImage"
             />
+          </div>
+        </section>
+
+        <section id="features" className="featureShowcase">
+          <div className="featureShowcaseIntro">
+            <h2 className="featureShowcaseTitle">Real-time hand tracking</h2>
+            <p className="featureShowcaseDesc">
+              See your hands move as you sign each letter and number.
+            </p>
+          </div>
+
+          <div className="featureCardsGrid">
+            <article className="featureCard">
+              <div className="featureCardImageWrap">
+                <img
+                  src={learnCardImg}
+                  alt="Learning ASL fingerspelling basics"
+                  className="featureCardImage"
+                />
+              </div>
+
+              <div className="featureCardContent">
+                <span className="featureCardEyebrow">Learn</span>
+                <h3 className="featureCardTitle">ASL spelling basics.</h3>
+                <p className="featureCardText">
+                  Master the alphabet and numbers from A to Z and 0 to 9.
+                </p>
+
+                <a href="#how" className="featureCardLink">
+                  Explore <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </article>
+
+            <article className="featureCard">
+              <div className="featureCardImageWrap">
+                <img
+                  src={feedbackCardImg}
+                  alt="Camera-based feedback for hand position"
+                  className="featureCardImage"
+                />
+              </div>
+
+              <div className="featureCardContent">
+                <span className="featureCardEyebrow">Camera-based feedback</span>
+                <h3 className="featureCardTitle">
+                  Get instant guidance.
+                </h3>
+                <p className="featureCardText">
+                  Instant feedback on your hand position and movement.
+                </p>
+
+                <Link to="/app" className="featureCardLink">
+                  Start <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </article>
+
+            <article className="featureCard">
+              <div className="featureCardImageWrap">
+                <img
+                  src={practiceCardImg}
+                  alt="Practice ASL at your own pace"
+                  className="featureCardImage"
+                />
+              </div>
+
+              <div className="featureCardContent">
+                <span className="featureCardEyebrow">
+                  Practice
+                </span>
+                <h3 className="featureCardTitle">Learn at your own pace.</h3>
+                <p className="featureCardText">Repition is key. Practice makes perfect.</p>
+
+                <Link to="/app" className="featureCardLink">
+                  Start Practicing{" "}
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </article>
           </div>
         </section>
 

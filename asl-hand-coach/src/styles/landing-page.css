@@ -4,7 +4,7 @@
   min-height: 100vh;
   padding: 12px 20px 40px;
   box-sizing: border-box;
-  background: #F16F65;
+  background: var(--color-brand);
 }
 
 .landingNav {
@@ -36,7 +36,7 @@
 
 .landingNavLink {
   text-decoration: none;
-  color: #fff;
+  color: var(--color-white);
   font-size: 14px;
   font-weight: 500;
   
@@ -44,6 +44,7 @@
 
 .landingNavLink:hover {
   opacity: 0.7;
+  color: var(--color-black);
 }
 
 .landingNavRight {
@@ -57,7 +58,7 @@
   justify-content: center;
   text-decoration: none;
   background: #fff;
-  color: #222;
+  color: var(--color-black);
   border-radius: 6px;
   padding: 5px 16px;
   font-size: 14px;
@@ -96,7 +97,7 @@
 
 .heroMockupTitle {
   margin: 0;
-  color: #fff;
+  color: var(--color-white);
   font-size: 4.2rem;
   line-height: 1.15;
   font-weight: 600;
@@ -106,9 +107,9 @@
 .heroMockupDesc {
   margin-top: 22px;
   max-width: 520px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.55;
-  color: #fff;
+  color: var(--color-white);
 }
 
 .heroMockupActions {
@@ -132,17 +133,22 @@
 
 .heroDownloadBtn {
   background: #fff;
-  color: #222;
+  color: var(--color-black);
   border-color: #fff;
 }
 
 .heroDownloadBtn:hover {
-  color: #F16F65;
+  color: var(--color-brand);
 }
 
 .heroLearnBtn {
-  background: #F16F65;
-  color: #fff;
+  background: var(--color-brand);
+  color: var(--color-white);
+}
+
+.heroLearnBtn:hover {
+  opacity: 0.7;
+  color: var(--color-black);
 }
 
 .heroMockupImageWrap {
@@ -184,7 +190,7 @@
   border: 1px solid #e6e6e6;
   border-radius: 14px;
   padding: 14px;
-  background: #fff;
+  background: var(--color-white);
 }
 
 .cardTitle {
@@ -214,15 +220,15 @@
   border: 1px solid #e6e6e6;
   border-radius: 14px;
   padding: 12px;
-  background: #fff;
+  background: var(--color-white);
 }
 
 .stepNum {
   width: 28px;
   height: 28px;
   border-radius: 999px;
-  background: #111;
-  color: #fff;
+  background: var(--color-black);
+  color: var(--color-white);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -244,7 +250,7 @@
   border: 1px solid #e6e6e6;
   border-radius: 14px;
   padding: 12px;
-  background: #fafafa;
+  background: var(--color-white);
 }
 
 .privacyTitle {
@@ -283,14 +289,14 @@
   text-decoration: none;
   cursor: pointer;
   border: 1px solid #ddd;
-  background: #fff;
+  background: var(--color-white);
   color: inherit;
 }
 
 .primaryBtn {
-  background: #111;
-  border-color: #111;
-  color: #fff;
+  background: var(--color-black);
+  border-color: var(--color-black);
+  color: var(--color-white);
 }
 
 .muted {
@@ -344,5 +350,159 @@
 
   .heroMockupActions {
     flex-wrap: wrap;
+  }
+}
+
+
+.featureShowcase {
+  margin-top: 120px;
+  padding: 0 24px;
+}
+
+.featureShowcaseIntro {
+  max-width: 900px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+
+.featureEyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-inverse, #ffffff);
+  opacity: 0.95;
+}
+
+.featureShowcaseTitle {
+  margin: 0;
+  font-family: var(--font-family-heading, "Poppins", sans-serif);
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: var(--color-text-inverse, #ffffff);
+}
+
+.featureShowcaseDesc {
+  margin: 18px auto 0;
+  max-width: 640px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-inverse, #ffffff);
+  opacity: 0.95;
+}
+
+.featureCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.featureCard {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  overflow: hidden;
+  background: transparent;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.featureCardImageWrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.featureCardImage {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.featureCardContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px 18px 18px;
+}
+
+.featureCardEyebrow {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--color-text-inverse, #ffffff);
+}
+
+.featureCardTitle {
+  margin: 0;
+  font-family: var(--font-family-heading, "Poppins", sans-serif);
+  font-size: clamp(1.8rem, 2.5vw, 2.7rem);
+  line-height: 1.08;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--color-text-inverse, #ffffff);
+}
+
+.featureCardText {
+  margin: 14px 0 0;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--color-text-inverse, #ffffff);
+  opacity: 0.95;
+  max-width: 90%;
+}
+
+.featureCardLink {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 28px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-inverse, #ffffff);
+  text-decoration: none;
+}
+
+.featureCardLink:hover {
+  opacity: 0.7;
+  color: var(--color-black);
+}
+
+@media (max-width: 1100px) {
+  .featureCardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .featureCard {
+    min-height: auto;
+  }
+
+  .featureCardImageWrap {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (max-width: 640px) {
+  .featureShowcase {
+    margin-top: 72px;
+    padding: 0;
+  }
+
+  .featureShowcaseIntro {
+    margin-bottom: 34px;
+  }
+
+  .featureCardContent {
+    padding: 18px 16px 16px;
+  }
+
+  .featureCardTitle {
+    font-size: 2rem;
   }
 }
