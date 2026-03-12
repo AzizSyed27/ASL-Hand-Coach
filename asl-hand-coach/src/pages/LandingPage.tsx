@@ -4,6 +4,10 @@ import logo from "../assets/asl_logo.png";
 import learnCardImg from "../assets/feature-learn.png";
 import feedbackCardImg from "../assets/feature-feedback.png";
 import practiceCardImg from "../assets/feature-practice.png";
+import stepsImg from "../assets/stepsImg.png";
+import cameraIcon from "../assets/camera-icon.png";
+import feedbackIcon from "../assets/feedback-icon.png";
+import computerIcon from "../assets/computer-icon.png";
 import "../styles/landing-page.css"
 
 export default function LandingPage() {
@@ -150,6 +154,75 @@ export default function LandingPage() {
           </div>
         </section>
 
+        <section className="processSection">
+
+           <div className="heroMockupImageWrap">
+            <img
+                  src={stepsImg}
+                  alt="Two people using a laptop while learning together"
+                  className="processImage"
+                />
+            </div>
+
+
+            <div className="processInfo">
+              
+              <div className="processSteps">
+                <article className="processStep">
+                  <div className="processIcon" aria-hidden="true">
+                    <img src={cameraIcon} alt="" className="processIconImage" />
+                  </div>
+
+                  <div className="processContent">
+                    <h3 className="processTitle">Open the app</h3>
+                    <p className="processText">
+                      Position your hands in front of the camera and let it see you clearly.
+                    </p>
+                    <Link to="/app" className="processLink">
+                      Begin <span aria-hidden="true">→</span>
+                    </Link>
+                  </div>
+                </article>
+
+                <article className="processStep">
+                  <div className="processIcon" aria-hidden="true">
+                    <img src={computerIcon} alt="" className="processIconImage" />
+                  </div>
+
+                  <div className="processContent">
+                    <h3 className="processTitle">Sign each letter</h3>
+                    <p className="processText">
+                      Watch the screen as your hands form each letter of the alphabet.
+                    </p>
+                    <Link to="/app" className="processLink">
+                      Practice <span aria-hidden="true">→</span>
+                    </Link>
+                  </div>
+                </article>
+
+                <article className="processStep">
+                  <div className="processIcon" aria-hidden="true">
+                    <img src={feedbackIcon} alt="" className="processIconImage" />
+                  </div>
+
+                  <div className="processContent">
+                    <h3 className="processTitle">Get real-time feedback</h3>
+                    <p className="processText">
+                      The app shows you if your hand shape and position are correct right away.
+                    </p>
+                    <Link to="/app" className="processLink">
+                      Improve <span aria-hidden="true">→</span>
+                    </Link>
+                  </div>
+                </article>
+              </div>
+              
+            </div>
+
+           
+        </section>
+
+        
 
 
         {/*}
@@ -239,19 +312,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <footer className="landingFooter">
-          <div className="muted">
-            Built with React + TypeScript + MediaPipe Tasks Vision
-          </div>
-          <div className="footerLinks">
-            <Link className="linkBtn" to="/app">
-              Open App
-            </Link>
-            <a className="linkBtn" href="#how">
-              Back to top
-            </a>
-          </div>
-        </footer>
+        
 
         */}
       </main>
