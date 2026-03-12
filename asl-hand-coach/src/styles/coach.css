@@ -313,6 +313,7 @@
 
 .cameraDevTools {
   margin-top: var(--space-5);
+  display: none;
 }
 
 .coachModeArea {
