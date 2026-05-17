@@ -5,9 +5,9 @@ fingerspelling alphabet using your webcam. It tracks your hand in real time,
 recognizes the letter you're signing, and gives instant visual feedback — no
 installs, no sign-up, and nothing leaves your machine.
 
-> **Status:** Early-stage personal project. Core hand-tracking and recognition
-> pipeline is working; lesson/quiz/free modes and the default sign templates are
-> actively being refined.
+---
+
+<img width="1903" height="990" alt="aslDemo" src="https://github.com/user-attachments/assets/f4185ec8-6837-4414-9cd3-41f77763754f" />
 
 ---
 
